@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    overflow: hidden;
+}
+
+.text {
+    color: black;
+    margin: 20px;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.boxes {
+    background-color: #ad2328;
+    margin: 20px;
+    padding: 50px;
+    font-size: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.orbitron {
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.vt323-regular {
+    font-family: "VT323", monospace;
+    font-weight: 900;
+    font-style: normal;
+}
+
+/*Search*/
+
+.search-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.searchbar {
+    width: 700px;
+    height: 125px;
+    margin-block: 100px;
+    border-color: #2f3291;
+    border-width: 10px;
+    border-radius: 50px;
+    outline: none;
+    font-size: 40px;
+    padding-left: 20px;
+    align-items: center;
+}
+
+input::placeholder {
+    font-size: 40px;
+}
+
+
+/* Container for all paints */
+#results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    /* bigger cards */
+    gap: 25px;
+    padding: 30px;
+}
+
+/* Individual paint card */
+.paint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #c9a969;
+    border-radius: 12px;
+    padding: 25px;
+    /* bigger padding */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Paint title */
+.paint h2 {
+    font-size: 28px;
+    /* bigger title */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Painter and description */
+.paint p {
+    font-size: 18px;
+    /* bigger text */
+    margin: 5px 0;
+    text-align: center;
+}
+
+/* Image styling */
+.paint img {
+    border-radius: 8px;
+    margin-top: 15px;
+    max-width: 100%;
+    height: auto;
+}
+
+#searchQuery {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 22px;
+    color: #f5e6c8;
+    font-family: "VT323", monospace;
+}
+
+/* Style the text inside */
+#searchQuery p {
+    background-color: rgba(0, 0, 0, 0.55);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid #c9a969;
+}
