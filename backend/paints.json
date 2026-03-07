@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name": "The Starry Night",
+        "painter": "Vincent van Gogh",
+        "description": "A dreamlike depiction of the view from the window of his asylum room at Saint-Rémy-de-Provence.",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Mona Lisa",
+        "painter": "Leonardo da Vinci",
+        "description": "A half-length portrait painting believed to be of Lisa Gherardini, famous for her enigmatic expression.",
+        "image_url": "https://wallpapers.com/images/thumbnail/mona-lisa-with-mustache-0l5klkqfjb1qh9gp.webp"
+    },
+    {
+        "id": 3,
+        "name": "The Persistence of Memory",
+        "painter": "Salvador Dalí",
+        "description": "A Surrealist masterpiece featuring melting pocket watches scattered across a maritime landscape.",
+        "image_url": "https://upload.wikimedia.org/wikipedia/en/d/dd/The_Persistence_of_Memory.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Girl with a Pearl Earring",
+        "painter": "Johannes Vermeer",
+        "description": "An oil painting depicting an exotic girl wearing an oriental turban and a very large pearl earring.",
+        "image_url": "https://i0.wp.com/upload.wikimedia.org/wikipedia/commons/e/ec/Jan_Vermeer_van_Delft_007.jpg"
+    },
+    {
+        "id": 5,
+        "name": "The Scream",
+        "painter": "Edvard Munch",
+        "description": "An expressionist piece symbolizing the agonized sky and the internal anxiety of modern man.",
+        "image_url": "https://cdn.britannica.com/93/240793-138-69567C00/Edvard-Munch-The-Scream.jpg?w=800&h=450&c=crop"
+    },
+    {
+        "id": 6,
+        "name": "The Birth of Venus",
+        "painter": "Sandro Botticelli",
+        "description": "Depicts the goddess Venus arriving at the shore after her birth, emerging from the waters in a giant scallop shell.",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg2FGfU5NWbfj0v4wHalsBO6F8vCzL50QL_A&s"
+    },
+    {
+        "id": 7,
+        "name": "Guernica",
+        "painter": "Pablo Picasso",
+        "description": "A large oil painting on canvas that is regarded as one of the most powerful anti-war paintings in history.",
+        "image_url": "https://upload.wikimedia.org/wikipedia/en/7/74/PicassoGuernica.jpg"
+    }
+]
