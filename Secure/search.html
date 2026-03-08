@@ -34,7 +34,9 @@
                     placeholder="Enter Your Search Query">
             </form>
         </div>
-        <div id="searchQuery"></div>
+        <div id="searchQuery" style="visibility: hidden;">
+            <p>Showing results for: <span id="queryText"></p></span>
+        </div>
 
     </div>
     <div id="results">
@@ -46,9 +48,11 @@
             .then(res => res.json())
             .then(data => {
                 const results = document.getElementById("results");
+                const queryText = document.getElementById("queryText");
                 const searchQuery = document.getElementById("searchQuery");
                 if (query) {
-                    searchQuery.innerHTML = `<p>Showing results for: ${query}</p>`;
+                    queryText.textContent = query;
+                    searchQuery.style.visibility = 'visible'
                 }
 
                 if (data.length === 0) {

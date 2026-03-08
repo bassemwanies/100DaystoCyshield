@@ -6,10 +6,10 @@ const fs =require('fs');
 
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '../Vulnerable')));
+app.use(express.static(path.join(__dirname, '../secure')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'../Vulnerable/home.html'));
+    res.sendFile(path.join(__dirname,'../secure/home.html'));
 });
 
 app.get('/api/paints',(req,res) => {
