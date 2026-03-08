@@ -21,7 +21,7 @@ app.get('/api/paints', (req, res) => {
 
 app.get('/api/search', (req, res) => {
     const query = req.query.query || "";
-    const data = fs.readFileSync('paints.json', 'utf-8');
+    const data = fs.readFileSync(path.join(__dirname, '..', 'paints.json'), 'utf8');
     const paints = JSON.parse(data);
     const results = paints.filter(paint =>
         paint.name.toLowerCase().includes(query.toLowerCase()) ||
