@@ -1,15 +1,16 @@
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const path = require('path');
 const fs =require('fs');
+const securePath = path.join(__dirname, '..', 'secure');
 
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '../secure')));
+app.use(express.static(securePath));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'../secure/home.html'));
+    res.sendFile(path.join(securePath,'home.html'));
 });
 
 app.get('/api/paints',(req,res) => {
