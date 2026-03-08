@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=VT323&display=swap"
+        rel="stylesheet">
+</head>
+
+<body style="background-image: url('https://i.pinimg.com/736x/18/43/b2/1843b214f3d0ffca016cccc2d90f6bf4.jpg'); ">
+    <div class="search-page">
+        <div class="header">
+            <div class="text">
+                <a href="https://github.com/bassemwanies"><img src="https://github.com/favicon.ico"
+                        style="height: 40px;"></a>
+            </div>
+            <div class="text vt323-regular">
+                <h1>100 Days to <span style="color: #ad2429;">C Y S H I E L
+                        <span style="color: #2f3291;">D</span> </span></h1>
+            </div>
+            <div class="text"><a href="https://medium.com/@bassemwanies2002"><img
+                        src="https://cdn-icons-png.flaticon.com/128/3670/3670068.png" style="height: 40px;"></a></div>
+        </div>
+        <hr style="color: #ad2429;">
+
+        <div class="flex-container">
+            <form action="/search.html">
+                <input type="text" class="searchbar vt323-regular" name="query" id="query"
+                    placeholder="Enter Your Search Query">
+            </form>
+        </div>
+        <div id="searchQuery"></div>
+
+    </div>
+    <div id="results">
+    </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get("query") || "";
+        fetch(`/api/search?query=${query}`)
+            .then(res => res.json())
+            .then(data => {
+                const results = document.getElementById("results");
+                const searchQuery = document.getElementById("searchQuery");
+                if (query) {
+                    searchQuery.textContent = `<p>Showing results for: ${query}</p>`;
+                }
+
+                if (data.length === 0) {
+                    results.innerHTML = "<p>No Paints Found!</p>";
+                    return;
+                }
+                data.forEach(paint => {
+                    results.innerHTML += `
+              <div class="paint">
+                  <h2>${paint.name}</h2>
+                  <p><b>Painter:</b> ${paint.painter}</p>
+                  <p>${paint.description}</p>
+                  <img src="${paint.image_url}" width="300">
+              </div>
+          `;
+                });
+            });
+    </script>
+</body>
+
+</html>
