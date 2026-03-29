@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=VT323&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="header">
+            <div class="text">
+                <a href="https://github.com/bassemwanies">
+                    <img src="https://github.com/favicon.ico" style="height: 40px;">
+                </a>
+            </div>
+
+            <div class="text vt323-regular">
+                <h1>100 Days to
+                    <span style="color: #ad2429;">C Y S H I E L
+                        <span style="color: #2f3291;">D</span>
+                    </span>
+                </h1>
+            </div>
+
+            <div class="text">
+                <a href="https://medium.com/@bassemwanies2002">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3670/3670068.png" style="height: 40px;">
+                </a>
+            </div>
+        </div>
+
+        <div class="login-page">
+
+            <form class="login-form vt323-regular">
+                <h2>Login</h2>
+
+                <input type="text" name="username" placeholder="Username" required class="text vt323-regular">
+                <input type="password" name="password" placeholder="Password" required class="text vt323-regular">
+
+                <button type="submit">Login</button>
+
+                <div class="error-msg" id="errorMsg">
+                    Invalid credentials
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.querySelector(".login-form");
+        const errorMsg = document.getElementById("errorMsg");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const username = form.username.value;
+            const password = form.password.value;
+
+            const res = await fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (!res.ok) {
+                form.classList.add("error");
+                errorMsg.style.display = "block";
+
+                setTimeout(() => {
+                    form.classList.remove("error");
+                }, 500);
+
+                setTimeout(() => {
+                    errorMsg.style.display = "none";
+                }, 2000);
+
+                return;
+            }
+
+            window.location.href = "/welcome";
+        });
+    </script>
+
+</body>
+
+</html>

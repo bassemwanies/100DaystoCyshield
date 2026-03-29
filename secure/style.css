@@ -210,7 +210,7 @@ input::placeholder {
     text-align: center;
 
     width: min(800px, 90%);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .painting img {
@@ -334,9 +334,155 @@ input::placeholder {
     font-size: 18px;
     text-align: left;
 
-    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .comment strong {
     font-size: 20px;
+}
+
+/* Login Form */
+
+.login-page {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    background-color: #0f172a;
+    padding: 60px 50px;
+    border-radius: 16px;
+
+    width: min(550px, 90%);
+    /* bigger width */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.login-form h2 {
+    color: #f5e6c8;
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
+
+/* Inputs */
+
+.login-form input {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 25px;
+
+    border-radius: 10px;
+    border: none;
+
+    font-size: 20px;
+}
+
+
+/* Button */
+
+.login-form button {
+    width: 100%;
+    padding: 18px;
+
+    background-color: #ad2328;
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #8e1d21;
+}
+
+.login-form h2 {
+    color: #f5e6c8;
+    margin-bottom: 35px;
+    font-size: 40px;
+    /* bigger */
+}
+
+.login-form.error {
+    border: 2px solid red;
+    box-shadow: 0 0 12px red;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    50% {
+        transform: translateX(6px);
+    }
+
+    75% {
+        transform: translateX(-6px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* optional error text */
+.error-msg {
+    color: red;
+    font-size: 18px;
+    margin-top: 10px;
+    display: none;
+}
+
+.welcome-container {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.welcome-title {
+    font-size: 60px;
+    color: white;
+    stroke: #8e1d21;
+    stroke-width: 2px;
+}
+
+.username {
+    font-size: 40px;
+    color: #ad2429;
+}
+
+.logout-btn {
+    padding: 10px 25px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    background: #ad2429;
+    color: white;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: darkred;
+    transform: scale(1.05);
 }
