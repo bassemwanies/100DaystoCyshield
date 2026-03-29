@@ -168,7 +168,7 @@ app.post("/login", loginLimiter, async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false, // true in production HTTPS
+            secure: true,
             sameSite: "lax",
             maxAge: 60 * 60 * 1000
         });
