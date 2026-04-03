@@ -10,4 +10,4 @@ You'll find two versions of each challenge:
 
 -------------------------------------------------------------
 
-Starting From Day 4 & 5 are built Secure By Design, so there's no vulnerable version of them.
+Day 4 & 5 are built Secure By Design, so there's no vulnerable version of them.
