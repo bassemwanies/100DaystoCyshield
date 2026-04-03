@@ -7,3 +7,7 @@ You'll find two versions of each challenge:
 -------------------------------------------------------------
 - One found in 'vulnerable' directory which is Vulnerable for sure.
 - Second one found in 'secure' directory which is Secure xD.
+
+-------------------------------------------------------------
+
+Starting From Day 4 & 5 are built Secure By Design, so there's no vulnerable version of them.
