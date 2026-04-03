@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verification Failed</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="header">
+            <div class="text">
+                <a href="https://github.com/bassemwanies">
+                    <img src="https://github.com/favicon.ico" style="height: 40px;">
+                </a>
+            </div>
+
+            <div class="text vt323-regular">
+                <h1>100 Days to
+                    <span style="color: #ad2429;">C Y S H I E L
+                        <span style="color: #2f3291;">D</span>
+                    </span>
+                </h1>
+            </div>
+
+            <div class="text">
+                <a href="https://medium.com/@bassemwanies2002">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3670/3670068.png" style="height: 40px;">
+                </a>
+            </div>
+        </div>
+
+        <div class="login-page">
+
+            <div class="login-form vt323-regular" style="text-align:center;">
+
+                <h2 style="color:red;">Verification Failed</h2>
+
+                <p style="font-size:22px; margin-top:20px; color:white">
+                    This link is invalid or expired.
+                </p>
+
+                <p style="font-size:20px; color:white">
+                    Please register again or request a new verification email.
+                </p>
+
+                <br>
+                <button id="resendBtn" style="
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+">
+                    Resend Verification Email
+                </button>
+
+                <p id="msg" style="margin-top:15px; color:lightgreen;"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const email = params.get("email");
+
+        const btn = document.getElementById("resendBtn");
+        const msg = document.getElementById("msg");
+
+        btn.addEventListener("click", async () => {
+
+            if (!email) {
+                msg.style.color = "red";
+                msg.innerText = "Email not found in link";
+                return;
+            }
+
+            msg.style.color = "white";
+            msg.innerText = "Sending...";
+
+            try {
+                const res = await fetch("/resend-verification", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await res.json();
+
+                msg.style.color = "lightgreen";
+                msg.innerText = data.message;
+
+            } catch (err) {
+                msg.style.color = "red";
+                msg.innerText = "Something went wrong";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
