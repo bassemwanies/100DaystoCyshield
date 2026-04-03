@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport({
 
 async function sendVerificationEmail(email, link) {
     await transporter.sendMail({
-        from: `"Cyshield Lab" <${process.env.EMAIL_USER}>`,
+        from: `"100 Days To Cyshield" <${process.env.EMAIL_USER}>`,
         to: email,
         subject: "Verify your email",
         html: `
