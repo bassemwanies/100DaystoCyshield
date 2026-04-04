@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=VT323&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="header">
+            <div class="text">
+                <a href="https://github.com/bassemwanies">
+                    <img src="https://github.com/favicon.ico" style="height: 40px;">
+                </a>
+            </div>
+
+            <div class="text vt323-regular">
+                <a href="/home.html" style="text-decoration: none;">
+                    <h1>100 Days to
+                        <span style="color: #ad2429;">C Y S H I E L
+                            <span style="color: #2f3291;">D</span>
+                        </span>
+                    </h1>
+                </a>
+            </div>
+
+            <div class="text">
+                <a href="https://medium.com/@bassemwanies2002">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3670/3670068.png" style="height: 40px;">
+                </a>
+            </div>
+        </div>
+
+        <div class="login-page">
+
+            <form class="login-form vt323-regular">
+                <h2>Register</h2>
+
+                <input type="text" name="username" placeholder="Username" required class="text vt323-regular">
+                <input type="email" name="email" placeholder="Email" required class="text vt323-regular">
+                <input type="password" name="password" placeholder="Password" required class="text vt323-regular">
+
+
+                <button type="submit">Register</button>
+
+                <div class="error-msg" id="errorMsg">
+                    Invalid credentials
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelector(".login-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const username = document.querySelector('input[name="username"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            const errorMsg = document.getElementById("errorMsg");
+
+            try {
+                const res = await fetch("/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username,
+                        email,
+                        password
+                    })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    errorMsg.style.display = "block";
+                    errorMsg.style.color = "green";
+                    errorMsg.innerText = data.message;
+
+                    setTimeout(() => {
+                        window.location.href = "/check-email";
+                    }, 1500);
+
+                } else {
+                    errorMsg.style.display = "block";
+                    errorMsg.style.color = "red";
+                    errorMsg.innerText = data.error || "Something went wrong";
+                }
+
+            } catch (err) {
+                console.error(err);
+                errorMsg.style.display = "block";
+                errorMsg.innerText = "Server error";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

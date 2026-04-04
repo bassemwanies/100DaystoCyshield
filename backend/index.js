@@ -6,7 +6,7 @@ require("dotenv").config({
     path: path.join(__dirname, ".env")
 });
 const fs = require('fs');
-const securePath = path.join(__dirname, '..', 'secure');
+const securePath = path.join(__dirname, '..', 'secure/public');
 const pool = require("./db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -226,7 +226,7 @@ app.get("/verify-email", async (req, res) => {
         );
 
         if (result.rows.length === 0) {
-            return res.sendFile(path.join(securePath, "verify-error.html"));
+            return res.sendFile(path.join(securePath, "../private/verify-error.html"));
         }
 
         const user = result.rows[0];
@@ -237,7 +237,7 @@ app.get("/verify-email", async (req, res) => {
                 [email]
             );
 
-            return res.sendFile(path.join(securePath, "verify-error.html"));
+            return res.sendFile(path.join(securePath, "../private/verify-error.html"));
         }
         await pool.query(
             `UPDATE users 
@@ -246,7 +246,7 @@ app.get("/verify-email", async (req, res) => {
             [email]
         );
 
-        res.sendFile(path.join(securePath, "verified.html"));
+        res.sendFile(path.join(securePath, "../private/verified.html"));
 
     } catch (err) {
         console.error(err);
@@ -304,7 +304,7 @@ app.post("/login", loginLimiter, async (req, res) => {
 });
 
 app.get("/welcome", authMiddleware, (req, res) => {
-    res.sendFile(path.join(securePath, "welcome.html"));
+    res.sendFile(path.join(securePath, "../private/welcome.html"));
 });
 
 app.get("/logout", (req, res) => {
@@ -370,6 +370,52 @@ app.post("/resend-verification", resendLimiter, async (req, res) => {
 app.get("/api/me", authMiddleware, (req, res) => {
     res.json({ username: req.user.username });
 });
+
+//Vulnerable Version (IDOR)
+/*app.get("/api/user", authMiddleware, async (req, res) => {
+    const { user_id } = req.query;
+
+    try {
+        const result = await pool.query(
+            "SELECT id, username, email FROM users WHERE id = $1",
+            [user_id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        res.json(result.rows[0]);
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Server error" });
+    }
+});*/
+
+app.get("/api/user", authMiddleware, async (req, res) => {
+    try {
+        const result = await pool.query(
+            "SELECT id, username, email FROM users WHERE id = $1",
+            [req.user.id]
+        );
+
+        res.json(result.rows[0]);
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+app.get("/profile", authMiddleware, (req, res) => {
+    res.sendFile(path.join(__dirname, "../secure/private/profile.html"));
+});
+
+app.get("/check-email", (req, res) => {
+    res.sendFile(path.join(__dirname, "../secure/private/check-email.html"));
+});
+
 
 app.listen(PORT, () => {
     console.log(`Express server running at http://localhost:${PORT}/`);

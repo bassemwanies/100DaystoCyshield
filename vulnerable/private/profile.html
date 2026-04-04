@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=VT323&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="text">
+                <a href="https://github.com/bassemwanies">
+                    <img src="https://github.com/favicon.ico" style="height: 40px;">
+                </a>
+            </div>
+
+            <div class="text vt323-regular">
+                <a href="/home.html" style="text-decoration: none;">
+                    <h1>100 Days to
+                        <span style="color: #ad2429;">C Y S H I E L
+                            <span style="color: #2f3291;">D</span>
+                        </span>
+                    </h1>
+                </a>
+            </div>
+
+            <div class="text">
+                <a href="https://medium.com/@bassemwanies2002">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3670/3670068.png" style="height: 40px;">
+                </a>
+            </div>
+        </div>
+
+        <!-- PROFILE CONTENT -->
+        <div class="welcome-container vt323-regular">
+
+            <h1 class="welcome-title">
+                Profile of <span id="username" class="username"></span>
+            </h1>
+
+            <div class="profile-info">
+                <p><strong>ID:</strong> <span id="user-id"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span></p>
+                <p><strong>Role:</strong> <span id="role"></span></p>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">Logout</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const userId = params.get("user_id");
+
+        fetch(`/api/user?user_id=${userId}`)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("username").innerText = data.username;
+                document.getElementById("user-id").innerText = data.id;
+                document.getElementById("email").innerText = data.email;
+            })
+            .catch(() => {
+                document.getElementById("username").innerText = "Unknown";
+            });
+
+        function logout() {
+            window.location.href = "/logout";
+        }
+    </script>
+
+</body>
+
+</html>
