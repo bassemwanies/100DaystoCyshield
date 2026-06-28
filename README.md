@@ -1,13 +1,29 @@
 # 100 Days to Cyshield
-A 100 Days Challenge to work in Cyshield, where I create vulnerable website functionalities and know the vulnerability cause then fix it and deploy it.
+A 100-day challenge to build and break web applications.
 
 ![alt text](image.png)
 
-You'll find two versions of each challenge:
--------------------------------------------------------------
-- One found in 'vulnerable' directory which is Vulnerable for sure.
-- Second one found in 'secure' directory which is Secure xD.
+## What This Is
+Each day I implement a vulnerable web functionality, 
+document the vulnerability, then build the secure version.
 
--------------------------------------------------------------
+## Tech Stack
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js / Express
+- Database: PostgreSQL
 
-Day 4 & 5 are built Secure By Design, so there's no vulnerable version of them.
+## Why
+To deeply understand vulnerabilities from both the 
+attacker and defender perspective — not just theory, 
+but working exploit + working fix.
+
+## Vulnerability Categories Covered
+- XSS (Reflected / Stored)
+- SQL Injection
+- Broken Access Control
+- Insecure Authentication
+
+## Structure
+├── vulnerable/   → intentionally broken version of the app
+└──  secure/       → hardened version of the app
+ 
