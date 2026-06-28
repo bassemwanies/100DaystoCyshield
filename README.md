@@ -25,5 +25,6 @@ but working exploit + working fix.
 
 ## Structure
 ├── vulnerable/   → intentionally broken version of the app
+
 └──  secure/       → hardened version of the app
  
